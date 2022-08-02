@@ -29,16 +29,15 @@ param domainName string = 'contoso.local'
 param dnsPrefix string
 
 @description('The location of resources such as templates and DSC modules that the script is dependent')
-param _artifactsLocation string = ''
+param _artifactsLocation string = 'https://raw.githubusercontent.com/adibnaya/AzureDevopsTest/main/create-2-dcs/'
 
 param vmSize string = 'Standard_Ds1_v2'
-
-param domainJoinOptions int
 
 param subscriptionId string
 
 param subscriptionName string
 
+var domainJoinOptions = 3
 var storageAccountName = 'azurelabsa${uniqueString(resourceGroup().id)}'
 var dnsLabelPrefix = 'azurelabmsdns${uniqueString(resourceGroup().id)}'
 var scriptUrl = 'https://raw.githubusercontent.com/adibnaya/AzureDevopsTest/main/domain-users/create_users.ps1'

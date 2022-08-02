@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.8.9.13224",
-      "templateHash": "3813615871685729441"
+      "templateHash": "3990423884085524927"
     }
   },
   "parameters": {
@@ -61,7 +61,7 @@
     },
     "_artifactsLocation": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "https://raw.githubusercontent.com/adibnaya/AzureDevopsTest/main/create-2-dcs/",
       "metadata": {
         "description": "The location of resources such as templates and DSC modules that the script is dependent"
       }
@@ -69,9 +69,6 @@
     "vmSize": {
       "type": "string",
       "defaultValue": "Standard_Ds1_v2"
-    },
-    "domainJoinOptions": {
-      "type": "int"
     },
     "subscriptionId": {
       "type": "string"
@@ -81,6 +78,7 @@
     }
   },
   "variables": {
+    "domainJoinOptions": 3,
     "storageAccountName": "[format('azurelabsa{0}', uniqueString(resourceGroup().id))]",
     "dnsLabelPrefix": "[format('azurelabmsdns{0}', uniqueString(resourceGroup().id))]",
     "scriptUrl": "https://raw.githubusercontent.com/adibnaya/AzureDevopsTest/main/domain-users/create_users.ps1",
@@ -1034,7 +1032,7 @@
             "value": "[parameters('adminPassword')]"
           },
           "domainJoinOptions": {
-            "value": "[parameters('domainJoinOptions')]"
+            "value": "[variables('domainJoinOptions')]"
           },
           "storageAccountName": {
             "value": "[variables('storageAccountName')]"
